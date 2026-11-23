@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authorization · Canal Dark Bíblico</title>
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <img src="icon.png" alt="Canal Dark Bíblico" class="logo">
+  <h1>Authorization received</h1>
+  <p id="msg">Returning to the Canal Dark Bíblico app on this computer…</p>
+  <p class="muted">If nothing happens, make sure the app is running and try connecting again.</p>
+</main>
+<script>
+  // TikTok Login Kit redirects here (registered Redirect URI). The operator's app listens only on
+  // this computer (127.0.0.1), so we forward the authorization code/state to it. Nothing is stored here.
+  (function () {
+    var q = window.location.search || "";
+    if (!q) { document.getElementById("msg").textContent = "No authorization data in this link."; return; }
+    window.location.replace("http://127.0.0.1:17563/tiktok/callback" + q);
+  })();
+</script>
+</body>
+</html>
